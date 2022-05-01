@@ -1,0 +1,7 @@
+.menu-item div {
+  transition: 0.2s;
+  width: 0;
+}
+.menu-item:hover div {
+  width: 100%;
+}

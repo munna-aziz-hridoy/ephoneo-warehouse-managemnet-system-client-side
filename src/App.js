@@ -1,10 +1,11 @@
 import "./App.css";
+import Header from "./Components/Header/Header";
 
 function App() {
   return (
-    <div>
-      <p className="text-lg text-red-500">Lorem ipsum dolor sit amet.</p>
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
