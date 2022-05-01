@@ -4,10 +4,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import CustomLink from "../CustomLink/CustomLink";
+import profilePhoto from "../../assets/images/profile.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const user = true;
+  const user = false;
   const headerItem = [
     { id: 1, name: "home", link: "/" },
     { id: 2, name: "about", link: "/about" },
@@ -15,15 +16,15 @@ const Header = () => {
   ];
   return (
     <header className="h-[80px] shadow-lg flex justify-center items-center">
-      <nav className="container mx-auto flex justify-between items-center relative">
+      <nav className="container mx-auto h-full flex justify-between items-center relative">
         <div className="h-[80px]">
           <img src={logo} className="w-full h-full" alt="" />
         </div>
         <div
           onClick={() => setMenuOpen(false)}
-          className={`w-full lg:w-fit h-fit p-8 ${
+          className={`w-full lg:w-fit h-fit lg:h-full p-8 ${
             menuOpen ? "top-24" : "top-[-300px]"
-          } duration-200 lg:duration-[0] rounded-lg shadow-lg lg:shadow-none text-center  lg:flex justify-between items-center gap-32 absolute lg:static`}
+          } duration-200 lg:duration-[0] rounded-lg shadow-lg lg:shadow-none text-center  lg:flex justify-between items-center gap-32 absolute lg:static z-50 bg-white`}
         >
           <ul className="lg:flex justify-center items-center gap-1">
             {headerItem.map((item) => (
@@ -40,8 +41,8 @@ const Header = () => {
               >
                 my items
               </Link>
-              <div className="bg-slate-200 w-[60px] h-[50px]">
-                <img src="" alt="" />
+              <div className="bg-slate-200 w-[55px] h-[55px] rounded-full p-1 flex justify-center items-center">
+                <img src={profilePhoto} alt="" className="rounded-full" />
               </div>
             </div>
           ) : (
