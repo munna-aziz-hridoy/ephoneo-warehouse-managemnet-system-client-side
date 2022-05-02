@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import AddProduct from "./Pages/AddProduct/AddProduct";
+import FourZeroFour from "./Pages/FourZeroFour/FourZeroFour";
 import Home from "./Pages/Home/Home";
 import Inventory from "./Pages/Inventory/Inventory";
 import Login from "./Pages/Login/Login";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/myitems" element={<MyItems />} />
+        <Route path="*" element={<FourZeroFour />} />
       </Routes>
       <Footer />
     </>
