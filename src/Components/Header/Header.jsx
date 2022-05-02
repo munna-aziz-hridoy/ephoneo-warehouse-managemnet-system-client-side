@@ -56,7 +56,7 @@ const Header = () => {
               <div
                 className={`${
                   userExpend ? "block" : "hidden"
-                } absolute w-1/2 lg:w-[150%] shadow-lg rounded-lg h-32 top-28 left-1/4 lg:left-[-90px]`}
+                } absolute w-1/2 lg:w-[150%] shadow-lg rounded-lg h-32 top-28 left-1/4 lg:left-[-90px] bg-white`}
               >
                 <h2 className="text-lg font-semibold text-gray-500 capitalize">
                   user@email.com
