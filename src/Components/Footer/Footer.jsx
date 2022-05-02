@@ -99,7 +99,7 @@ const Footer = () => {
           <h2 className="text-2xl font-semibold capitalize my-5 text-slate-100">
             send us email
           </h2>
-          <form>
+          <form className="flex flex-col justify-center items-start">
             <input
               name="email"
               className="p-3 rounded-lg my-2"
@@ -108,7 +108,7 @@ const Footer = () => {
             <textarea
               name="message"
               id=""
-              cols="30"
+              cols="23"
               rows="3"
               className="p-3 rounded-lg my-2"
               placeholder="your message"

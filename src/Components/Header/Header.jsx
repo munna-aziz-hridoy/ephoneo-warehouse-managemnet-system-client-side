@@ -11,8 +11,9 @@ const Header = () => {
   const user = false;
   const headerItem = [
     { id: 1, name: "home", link: "/" },
-    { id: 2, name: "about", link: "/about" },
-    { id: 3, name: "blog", link: "/blog" },
+    { id: 2, name: "inventory", link: "/inventory" },
+    { id: 3, name: "about", link: "/about" },
+    { id: 4, name: "blog", link: "/blog" },
   ];
   return (
     <header className="h-[90px] shadow-lg flex justify-center items-center">
