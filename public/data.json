@@ -1,0 +1,163 @@
+[
+  {
+    "name": "huawei watch gt 2",
+    "image": "https://i.ibb.co/Xby7Gqh/2.png",
+    "description": "huawei gt 2 is one of the best watch of huawei, its show every movement of yours and also send all notification from your phone",
+    "supplier": "huawei lnc",
+    "brand": "huawei",
+    "price": 108,
+    "quantity": 13,
+    "sold": 7
+  },
+  {
+    "name": "huawei watch gt 1",
+    "image": "https://i.ibb.co/99rRpbr/1.png",
+    "description": "huawei gt 1 is first revolionary watch of huawei, you can measure your every day activities and track your health condition",
+    "supplier": "huawei lnc",
+    "brand": "huawei",
+    "price": 180,
+    "quantity": 15,
+    "sold": 9
+  },
+  {
+    "name": "galaxy watch 3",
+    "image": "https://i.ibb.co/vYDgxCp/3.png",
+    "description": "samsung galaxy watch 3. space in your wrist. track every single space throw our watch 3",
+    "supplier": "samsung lnc",
+    "brand": "samsung",
+    "price": 135,
+    "quantity": 8,
+    "sold": 3
+  },
+  {
+    "name": "huawei fit 2",
+    "image": "https://i.ibb.co/4mpMKs4/4.png",
+    "description": "huawei fit 2 seris, slim and light weight. full features of functionality. make call and reply on chat while traveling",
+    "supplier": "huawei lnc",
+    "brand": "huawei",
+    "price": 116,
+    "quantity": 13,
+    "sold": 5
+  },
+  {
+    "name": "huawei gt 1 seris",
+    "image": "https://i.ibb.co/LP00Wxc/5.png",
+    "description": "eco-friendly, and slim watch. call and sound notification, water  proof, never stop your journey in middle point",
+    "supplier": "huawei lnc",
+    "brand": "huawei",
+    "price": 86,
+    "quantity": 9,
+    "sold": 6
+  },
+  {
+    "name": "galaxy serius 2",
+    "image": "https://i.ibb.co/qJSBnFp/6.png",
+    "description": "round trip on space with galaxy watch series 2. whole galaxy in your hand with this galaxy 2",
+    "supplier": "samsung lnc",
+    "brand": "samsung",
+    "price": 96,
+    "quantity": 12,
+    "sold": 5
+  },
+  {
+    "name": "tesla pie",
+    "image": "https://i.ibb.co/cvc2Pmt/7.png",
+    "description": "voice command on new tesla pie phone. elon mask is trying to make a evolation on any company",
+    "supplier": "tesla lnc",
+    "brand": "tesla",
+    "price": 126,
+    "quantity": 22,
+    "sold": 8
+  },
+
+  {
+    "name": "tesla pie 2",
+    "image": "https://i.ibb.co/mS8Shnw/10.png",
+    "description": "voice command on new tesla pie phone. pie two is also refect the new revulationary changes in electric goods.s",
+    "supplier": "tesla lnc",
+    "brand": "tesla",
+    "price": 206,
+    "quantity": 18,
+    "sold": 6
+  },
+  {
+    "name": "blackberry passport",
+    "image": "https://i.ibb.co/cb7k9qJ/8.png",
+    "description": "blackberry is one of the most top comapany who provide a lot of luxarius mobile",
+    "supplier": "blackberry lnc",
+    "brand": "blackberry",
+    "price": 344,
+    "quantity": 7,
+    "sold": 2
+  },
+  {
+    "name": "samsung galaxy s7",
+    "image": "https://i.ibb.co/tpPGv2W/11.png",
+    "description": "samsung galaxy s7 introduce the curve glass edition phone. it comes with corning gorrila level 5",
+    "supplier": "samsung lnc",
+    "brand": "samsung",
+    "price": 344,
+    "quantity": 7,
+    "sold": 2
+  },
+  {
+    "name": "samsung galaxy s4",
+    "image": "https://i.ibb.co/18w00nX/12.png",
+    "description": "samsung galaxy s4 is creating the future with samsung galaxy. This series is getting popularity",
+    "supplier": "samsung lnc",
+    "brand": "samsung",
+    "price": 144,
+    "quantity": 11,
+    "sold": 5
+  },
+  {
+    "name": "samsung galaxy a20",
+    "image": "https://i.ibb.co/PwbRXsd/13.png",
+    "description": "samsung a20 is a ultaboost powerfull smartphone for gaming and video streaming. Faster than any other smartphone",
+    "supplier": "samsung lnc",
+    "brand": "samsung",
+    "price": 158,
+    "quantity": 19,
+    "sold": 4
+  },
+  {
+    "name": "samsung galaxy s20 ultra",
+    "image": "https://i.ibb.co/PwbRXsd/13.png",
+    "description": "moon can be capture with new samsung s20 ultra, one of the best flagship smartphone at this moment",
+    "supplier": "samsung lnc",
+    "brand": "samsung",
+    "price": 290,
+    "quantity": 14,
+    "sold": 6
+  },
+  {
+    "name": "google pixel 4a",
+    "image": "https://i.ibb.co/B6WNHhF/16.png",
+    "description": "one of the best significient smartphone from google. it has a clear camera to capture the nature",
+    "supplier": "google lnc",
+    "brand": "google",
+    "price": 170,
+    "quantity": 12,
+    "sold": 7
+  },
+  {
+    "name": "iphone 12 pro",
+    "image": "https://i.ibb.co/mSt5V1M/17.png",
+    "description": "boost your gaming and capture what you want with this new iphone 12 pro. flagship master from apple",
+    "supplier": "apple lnc",
+    "brand": "apple",
+    "price": 390,
+    "quantity": 18,
+    "sold": 5
+  },
+  {
+    "name": "iphone 14 pro max",
+    "image": "https://i.ibb.co/R9Sw7K3/18.png",
+    "description": "sea blue color comes with new iphone 14 pro max.",
+    "supplier": "apple lnc",
+    "brand": "apple",
+    "price": 430,
+    "quantity": 12,
+    "sold": 7
+  }
+]
