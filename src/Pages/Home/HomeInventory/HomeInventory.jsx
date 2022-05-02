@@ -36,7 +36,7 @@ const HomeInventory = () => {
       sold: 3,
     },
   ];
-  console.log(products);
+
   const { brand, description, image, name, price, quantity, supplier } =
     products[1];
   return (
@@ -62,10 +62,15 @@ const HomeInventory = () => {
             <span>quantity: {quantity}</span>
           </p>
           <p className="text-md text-gray-500 capitalize">{description}</p>
-          <button className="text-semibold capitalize bg-[#5c2d91] px-8 py-3 rounded-lg shadow-lg text-lg text-white my-3 w-full">
+          <button className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-3 w-full">
             update
           </button>
         </div>
+      </div>
+      <div className="flex justify-center items-center">
+        <button className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91] my-3">
+          manage inventory
+        </button>
       </div>
     </div>
   );

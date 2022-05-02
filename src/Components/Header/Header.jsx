@@ -15,7 +15,7 @@ const Header = () => {
     { id: 3, name: "blog", link: "/blog" },
   ];
   return (
-    <header className="h-[80px] shadow-lg flex justify-center items-center">
+    <header className="h-[90px] shadow-lg flex justify-center items-center">
       <nav className="container mx-auto h-full flex justify-between items-center relative">
         <div className="h-[80px]">
           <img src={logo} className="w-full h-full" alt="" />
@@ -46,16 +46,16 @@ const Header = () => {
               </div>
             </div>
           ) : (
-            <div className="bg-[#5c2d91] p-5 flex justify-center items-center gap-6 rounded-lg">
+            <div className="bg-white border-2 border-[#5c2d91]  p-5 flex justify-center items-center gap-6 rounded-lg">
               <Link
                 to="/login"
-                className="text-xl font-semibold capitalize text-slate-100"
+                className="text-xl font-semibold capitalize text-[#5c2d91] "
               >
                 login
               </Link>
               <Link
                 to="/register"
-                className="text-xl font-semibold capitalize text-slate-100"
+                className="text-xl font-semibold capitalize text-[#5c2d91] "
               >
                 register
               </Link>
