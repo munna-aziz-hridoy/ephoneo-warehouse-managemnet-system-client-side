@@ -18,6 +18,7 @@ const Inventory = () => {
       price: 108,
       quantity: 13,
       sold: 7,
+      _id: 1,
     },
     {
       name: "huawei watch gt 1",
@@ -29,6 +30,7 @@ const Inventory = () => {
       price: 180,
       quantity: 15,
       sold: 9,
+      _id: 2,
     },
     {
       name: "galaxy watch 3",
@@ -40,6 +42,7 @@ const Inventory = () => {
       price: 135,
       quantity: 8,
       sold: 3,
+      _id: 3,
     },
   ];
 
@@ -88,9 +91,13 @@ const Inventory = () => {
             </thead>
             <tbody>
               {products.map((product) => {
-                const { name, image, brand, price, quantity, sold } = product;
+                const { _id, name, image, brand, price, quantity, sold } =
+                  product;
                 return (
-                  <tr className="border-b  odd:bg-white even:bg-gray-50 ">
+                  <tr
+                    key={_id}
+                    className="border-b  odd:bg-white even:bg-gray-50 "
+                  >
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-600  whitespace-nowrap capitalize flex justify-start items-center gap-3"

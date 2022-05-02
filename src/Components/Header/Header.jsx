@@ -14,6 +14,7 @@ const Header = () => {
     { id: 2, name: "inventory", link: "/inventory" },
     { id: 3, name: "about", link: "/about" },
     { id: 4, name: "blog", link: "/blog" },
+    { id: 5, name: "add item", link: "/addproduct" },
   ];
   return (
     <header className="h-[90px] shadow-lg flex justify-center items-center">
