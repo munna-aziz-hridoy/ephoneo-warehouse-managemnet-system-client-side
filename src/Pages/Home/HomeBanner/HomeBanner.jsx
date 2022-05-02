@@ -1,14 +1,15 @@
 import React from "react";
+import { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 import banner1 from "../../../assets/images/banner-1.png";
 import banner2 from "../../../assets/images/banner-2.png";
 import banner3 from "../../../assets/images/banner-3.png";
 
 // import required modules
-import { Pagination } from "swiper";
 
 const HomeBanner = () => {
   return (
@@ -17,7 +18,8 @@ const HomeBanner = () => {
         pagination={{
           dynamicBullets: true,
         }}
-        modules={[Pagination]}
+        autoplay={{ delay: 5000 }}
+        modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide className="relative">
