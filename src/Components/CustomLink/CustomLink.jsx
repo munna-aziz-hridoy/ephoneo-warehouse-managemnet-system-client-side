@@ -2,11 +2,14 @@ import React from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "./CustomLink.css";
 
-const CustomLink = ({ children, to, ...props }) => {
+const CustomLink = ({ children, to, setMenuOpen, ...props }) => {
   const resolve = useResolvedPath(to);
   const match = useMatch({ path: resolve.pathname, end: true });
   return (
-    <li className="px-6 relative menu-item my-3 lg:my-0 w-[22%] lg:w-fit mx-auto">
+    <li
+      onClick={() => setMenuOpen(false)}
+      className="px-6 relative menu-item my-3 lg:my-0 w-[22%] lg:w-fit mx-auto"
+    >
       <Link
         to={to}
         {...props}
