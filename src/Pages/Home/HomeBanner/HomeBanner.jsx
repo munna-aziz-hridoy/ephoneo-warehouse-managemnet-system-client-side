@@ -18,12 +18,13 @@ const HomeBanner = () => {
         pagination={{
           dynamicBullets: true,
         }}
+        loop={true}
         autoplay={{ delay: 5000 }}
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide className="relative">
-          <img src={banner1} alt="" />
+          <img src={banner1} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">
             <h2 className="text-slate-100 font-bold text-3xl lg:text-6xl capitalize text-center">
               we are here to store the product you need
@@ -36,7 +37,7 @@ const HomeBanner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
-          <img src={banner2} alt="" />
+          <img src={banner2} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">
             <h2 className="text-slate-100 font-bold text-3xl lg:text-6xl capitalize text-center">
               the uniqe of collection
@@ -48,7 +49,7 @@ const HomeBanner = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide className="relative">
-          <img src={banner3} alt="" />
+          <img src={banner3} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">
             <h2 className="text-slate-100 font-bold text-3xl lg:text-6xl capitalize text-center">
               safe and all product are kept carefully

@@ -8,13 +8,12 @@ import profilePhoto from "../../assets/images/profile.png";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const user = false;
+  const user = true;
   const headerItem = [
     { id: 1, name: "home", link: "/" },
     { id: 2, name: "inventory", link: "/inventory" },
-    { id: 3, name: "about", link: "/about" },
+    { id: 3, name: "add item", link: "/addproduct" },
     { id: 4, name: "blog", link: "/blog" },
-    { id: 5, name: "add item", link: "/addproduct" },
   ];
   return (
     <header className="h-[90px] shadow-lg flex justify-center items-center">
@@ -25,8 +24,8 @@ const Header = () => {
         <div
           onClick={() => setMenuOpen(false)}
           className={`w-full lg:w-fit h-fit lg:h-full p-8 ${
-            menuOpen ? "top-24" : "top-[-300px]"
-          } duration-200 lg:duration-[0] rounded-lg shadow-lg lg:shadow-none text-center  lg:flex justify-between items-center gap-32 absolute lg:static z-50 bg-white`}
+            menuOpen ? "top-24" : "top-[-900px]"
+          } duration-200 lg:duration-[0] rounded-lg shadow-lg lg:shadow-none text-center  lg:flex justify-between items-center gap-20 absolute lg:static z-50 bg-white`}
         >
           <ul className="lg:flex justify-center items-center gap-1">
             {headerItem.map((item) => (

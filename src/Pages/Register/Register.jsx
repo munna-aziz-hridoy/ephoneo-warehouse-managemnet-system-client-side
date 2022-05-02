@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import SocialButtons from "../../Components/SocialButtons/SocialButtons";
 
 const Register = () => {
   const [registerUser, setRegisterUser] = useState({});
@@ -21,7 +22,7 @@ const Register = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
+          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
           onSubmit={handleSubmit((data) => setRegisterUser(data))}
         >
           <input
@@ -82,6 +83,7 @@ const Register = () => {
             </Link>
           </p>
         </form>
+        <SocialButtons />
       </div>
     </>
   );

@@ -6,7 +6,7 @@ const CustomLink = ({ children, to, ...props }) => {
   const resolve = useResolvedPath(to);
   const match = useMatch({ path: resolve.pathname, end: true });
   return (
-    <li className="px-6 relative menu-item my-3 lg:my-0 w-[18%] lg:w-fit mx-auto">
+    <li className="px-6 relative menu-item my-3 lg:my-0 w-[22%] lg:w-fit mx-auto">
       <Link
         to={to}
         {...props}

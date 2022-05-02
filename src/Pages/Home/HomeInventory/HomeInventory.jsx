@@ -50,14 +50,14 @@ const HomeInventory = () => {
           <div className="w-full">
             <img src={image} alt="" className="w-full rounded-lg mb-5" />
           </div>
-          <h3 className="font-bold text-3xl capitalize text-gray-500 my-4">
+          <h3 className="font-bold text-2xl capitalize text-gray-500 my-4">
             {name}
           </h3>
-          <p className="text-xl font-semibold text-gray-500 flex justify-between items-center capitalize my-4">
+          <p className="font-semibold text-gray-500 flex justify-between items-center capitalize my-4">
             <span className="text-[#5c2d91]">brand: {brand}</span>{" "}
             <span>supplier: {supplier}</span>
           </p>
-          <p className="text-lg font-semibold text-gray-500 flex justify-between items-center capitalize my-4">
+          <p className="font-semibold text-gray-500 flex justify-between items-center capitalize my-4">
             <span className="text-[#5c2d91]">{price}$/per pis</span>{" "}
             <span>quantity: {quantity}</span>
           </p>

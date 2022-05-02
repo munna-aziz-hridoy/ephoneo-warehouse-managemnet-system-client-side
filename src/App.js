@@ -6,6 +6,7 @@ import AddProduct from "./Pages/AddProduct/AddProduct";
 import Home from "./Pages/Home/Home";
 import Inventory from "./Pages/Inventory/Inventory";
 import Login from "./Pages/Login/Login";
+import MyItems from "./Pages/MyItems/MyItems";
 import Register from "./Pages/Register/Register";
 import UpdateItem from "./Pages/UpdateItem/UpdateItem";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/update/:id" element={<UpdateItem />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/myitems" element={<MyItems />} />
       </Routes>
       <Footer />
     </>

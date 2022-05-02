@@ -21,7 +21,7 @@ const Login = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
+          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
           onSubmit={handleSubmit((data) => setUser(data))}
         >
           <input
