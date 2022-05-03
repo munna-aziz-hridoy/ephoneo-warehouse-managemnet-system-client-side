@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import AddProduct from "./Pages/AddProduct/AddProduct";
 import FourZeroFour from "./Pages/FourZeroFour/FourZeroFour";
 import Home from "./Pages/Home/Home";
@@ -17,12 +18,40 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/addproduct" element={<AddProduct />} />
-        <Route path="/update/:id" element={<UpdateItem />} />
+        <Route
+          path="/inventory"
+          element={
+            <RequireAuth>
+              <Inventory />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/addproduct"
+          element={
+            <RequireAuth>
+              <AddProduct />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/update/:id"
+          element={
+            <RequireAuth>
+              <UpdateItem />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/myitems" element={<MyItems />} />
+        <Route
+          path="/myitems"
+          element={
+            <RequireAuth>
+              <MyItems />
+            </RequireAuth>
+          }
+        />
         <Route path="*" element={<FourZeroFour />} />
       </Routes>
       <Footer />

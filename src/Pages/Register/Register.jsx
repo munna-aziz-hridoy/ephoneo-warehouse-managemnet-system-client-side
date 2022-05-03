@@ -1,18 +1,50 @@
-import React, { useState } from "react";
+import { async } from "@firebase/util";
+import React, { useEffect, useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialButtons from "../../Components/SocialButtons/SocialButtons";
+import Spinner from "../../Components/Spinner/Spinner";
+import auth from "../../firebase.init";
 
 const Register = () => {
+  const [errorText, setErrorText] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [registerUser, setRegisterUser] = useState({});
   const { email, password, confirmPassword } = registerUser;
-  if (password === confirmPassword) {
-  }
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+
+  useEffect(() => {
+    if (email && password && confirmPassword && password === confirmPassword) {
+      createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          setRegisterUser({});
+          navigate("/");
+        })
+        .catch();
+    }
+  }, [email, password, confirmPassword]);
+
+  useEffect(() => {
+    if (password !== confirmPassword) {
+      setErrorText("Password did not match");
+    }
+    if (error) {
+      setErrorText(error.message);
+    }
+  }, [password, confirmPassword, error]);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
     <>
       <div className="bg-[#19092c] py-24 my-10">
@@ -22,15 +54,19 @@ const Register = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
-          onSubmit={handleSubmit((data) => setRegisterUser(data))}
+          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
+          onSubmit={handleSubmit((data) => {
+            setRegisterUser(data);
+            setErrorText("");
+            reset();
+          })}
         >
           <input
             type="email"
             name="email"
             id="email"
             {...register("email", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Email"
           />
           {(<errors className="email"></errors>)?.type === "required" && (
@@ -43,7 +79,7 @@ const Register = () => {
             name="password"
             id="password"
             {...register("password", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Password"
           />
           {errors.password?.type === "required" && (
@@ -56,21 +92,17 @@ const Register = () => {
             name="confirmPassword"
             id="confirmPassword"
             {...register("confirmPassword", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Confirm Password"
           />
           {errors.confirmPassword?.type === "required" && (
             <p className="text-red-300 font-medium  capitalize w-[66%] mt-[-20px]">
-              Please confirm password
+              Please enter confirm password
             </p>
           )}
-          {password !== confirmPassword ? (
-            <p className="text-red-300 font-medium  capitalize w-[66%] mt-[-20px]">
-              Please confirm password
-            </p>
-          ) : (
-            ""
-          )}
+          <p className="text-red-300 font-medium  capitalize w-[66%] mt-[-10px]">
+            {errorText}
+          </p>
           <input
             type="submit"
             value="Register"

@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import CustomLink from "../CustomLink/CustomLink";
 import profilePhoto from "../../assets/images/profile.png";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userExpend, setUserExpend] = useState(false);
-  const user = true;
+  const [user] = useAuthState(auth);
   const headerItem = [
     { id: 1, name: "home", link: "/" },
     { id: 2, name: "inventory", link: "/inventory" },
@@ -58,10 +61,13 @@ const Header = () => {
                   userExpend ? "block" : "hidden"
                 } absolute w-1/2 lg:w-[150%] shadow-lg rounded-lg h-32 top-28 left-1/4 lg:left-[-90px] bg-white`}
               >
-                <h2 className="text-lg font-semibold text-gray-500 capitalize">
+                <h2 className="text-lg font-semibold text-gray-500 capitalize mt-2">
                   user@email.com
                 </h2>
-                <button className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-6 w-2/3">
+                <button
+                  onClick={() => signOut(auth)}
+                  className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-6 w-full lg:w-2/3"
+                >
                   log out
                 </button>
               </div>

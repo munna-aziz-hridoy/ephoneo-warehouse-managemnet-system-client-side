@@ -9,9 +9,7 @@ const AddProduct = () => {
   } = useForm();
   const [data, setData] = useState({});
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  useEffect(() => {}, [data]);
 
   return (
     <>
@@ -22,7 +20,7 @@ const AddProduct = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
+          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
           onSubmit={handleSubmit((data) => setData(data))}
         >
           <input
@@ -30,7 +28,7 @@ const AddProduct = () => {
             name="name"
             id="name"
             {...register("name", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Product name"
           />
           {errors.name?.type === "required" && (
@@ -43,7 +41,7 @@ const AddProduct = () => {
             name="brand"
             id="brand"
             {...register("brand", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Brand name"
           />
           {errors.brand?.type === "required" && (
@@ -56,7 +54,7 @@ const AddProduct = () => {
             name="supplier"
             id="supplier"
             {...register("supplier", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Supplier name"
           />
           {errors.supplier?.type === "required" && (
@@ -70,7 +68,7 @@ const AddProduct = () => {
             name="description"
             id="description"
             {...register("description")}
-            className="w-2/3 h-24 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-24 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Please add some description "
           ></textarea>
           <input
@@ -78,7 +76,7 @@ const AddProduct = () => {
             name="price"
             id="price"
             {...register("price", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Enter price"
           />
           {errors.price?.type === "required" && (
@@ -91,7 +89,7 @@ const AddProduct = () => {
             name="quantity"
             id="quantity"
             {...register("quantity", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Enter quantity"
           />
           {errors.quantity?.type === "required" && (
@@ -104,7 +102,7 @@ const AddProduct = () => {
             name="image"
             id="image"
             {...register("image", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Image url"
           />
           {errors.image?.type === "required" && (

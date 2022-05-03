@@ -1,17 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialButtons from "../../Components/SocialButtons/SocialButtons";
+import Spinner from "../../Components/Spinner/Spinner";
+import auth from "../../firebase.init";
 
 const Login = () => {
-  const [user, setUser] = useState({});
-  const { email, password } = user;
-
+  const [loggedUserInfo, setLoggedUserInfo] = useState({});
+  const [loggedUser, loggedUserLoading] = useAuthState(auth);
+  const { email, password } = loggedUserInfo;
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (email && password) {
+      signInWithEmailAndPassword(email, password).then(() => {
+        setLoggedUserInfo({});
+      });
+    }
+  }, [email, password]);
+
+  if (loading || loggedUserLoading) {
+    return <Spinner />;
+  }
+  if (loggedUser) {
+    navigate(from);
+  }
   return (
     <>
       <div className="bg-[#19092c] py-24 my-10">
@@ -21,15 +49,18 @@ const Login = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
-          onSubmit={handleSubmit((data) => setUser(data))}
+          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
+          onSubmit={handleSubmit((data) => {
+            setLoggedUserInfo(data);
+            reset();
+          })}
         >
           <input
             type="email"
             name="email"
             id="email"
             {...register("email", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Email"
           />
           {(<errors className="email"></errors>)?.type === "required" && (
@@ -42,12 +73,17 @@ const Login = () => {
             name="password"
             id="password"
             {...register("password", { required: true })}
-            className="w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
             placeholder="Password"
           />
           {errors.password?.type === "required" && (
             <p className="text-red-300 font-medium  capitalize w-[66%] mt-[-20px]">
               Please enter password
+            </p>
+          )}
+          {error && (
+            <p className="text-red-300 font-medium  capitalize w-[66%] mt-[-20px]">
+              {error?.message}
             </p>
           )}
           <input
