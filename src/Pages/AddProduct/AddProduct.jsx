@@ -1,15 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { async } from "@firebase/util";
 
 const AddProduct = () => {
+  const [user] = useAuthState(auth);
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    if (user) {
+      setEmail(user.email);
+    }
+  }, [user]);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-  const [data, setData] = useState({});
 
-  useEffect(() => {}, [data]);
+  const handleAddProduct = async (data) => {
+    await fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        reset();
+      });
+  };
 
   return (
     <>
@@ -21,7 +42,7 @@ const AddProduct = () => {
       <div className="container mx-auto">
         <form
           className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
-          onSubmit={handleSubmit((data) => setData(data))}
+          onSubmit={handleSubmit((data) => handleAddProduct(data))}
         >
           <input
             type="text"
@@ -110,6 +131,15 @@ const AddProduct = () => {
               Please enter image
             </p>
           )}
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            {...register("email", { required: true })}
+            className="w-full lg:w-2/3 h-12 p-2 border-[#5c2d91] border-2 rounded-lg text-gray-500 placeholder:text-gray-400 text-lg "
+            placeholder="Image url"
+          />
           <input
             type="submit"
             className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91] w-[66%] my-14"
