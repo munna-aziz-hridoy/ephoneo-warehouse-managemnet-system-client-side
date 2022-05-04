@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 
 const UpdateItem = () => {
+  const [product, setProduct] = useState({});
   const { register, handleSubmit, errors } = useForm(); // initialize the hook
   const onSubmit = (data) => {
     console.log(data);
   };
+  const { id } = useParams();
 
-  const { name, image, description, supplier, brand, price, quantity, sold } = {
-    name: "huawei watch gt 1",
-    image: "https://i.ibb.co/99rRpbr/1.png",
-    description:
-      "huawei gt 1 is first revolionary watch of huawei, you can measure your every day activities and track your health condition",
-    supplier: "huawei lnc",
-    brand: "huawei",
-    price: 180,
-    quantity: 15,
-    sold: 9,
-  };
+  useEffect(() => {
+    const url = `http://localhost:5000/singleProduct?id=${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, [id]);
+
+  const { name, image, description, supplier, brand, price, quantity, sold } =
+    product;
   return (
     <>
       <div className="bg-[#19092c] py-24 my-10">
@@ -46,13 +47,13 @@ const UpdateItem = () => {
               brand: <span className="text-[#5c2d91]">{brand}</span>
             </p>
             <p className="text-lg text-gray-500 capitalize font-semibold">
-              supplier: <span className="text-[#5c2d91]">${supplier}</span>
+              supplier: <span className="text-[#5c2d91]">{supplier}</span>
             </p>
             <p className="text-lg text-gray-500 capitalize font-semibold">
-              sold: <span className="text-[#5c2d91]">${sold}</span>
+              sold: <span className="text-[#5c2d91]">{sold}</span>
             </p>
             <p className="text-2xl text-gray-500 capitalize font-semibold">
-              quantity: <span className="text-[#5c2d91]">${quantity}</span>
+              quantity: <span className="text-[#5c2d91]">{quantity}</span>
             </p>
           </div>
           <form
@@ -63,6 +64,7 @@ const UpdateItem = () => {
               type="number"
               name="quantity"
               id="quantity"
+              {...register("quantity", { required: true })}
               placeholder="update stock"
               className="p-3 rounded-lg my-2 border-[#5c2d91] border-2 placeholder:text-lg placeholder:text-medium placeholder:text-[#5c2d91] placeholder:capitalize text-lg ptext-medium text-[#5c2d91] capitalize"
             />

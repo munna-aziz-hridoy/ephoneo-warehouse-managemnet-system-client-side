@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import React, { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
@@ -11,8 +10,7 @@ const Register = () => {
   const [errorText, setErrorText] = useState("");
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-  const [registerUser, setRegisterUser] = useState({});
-  const { email, password, confirmPassword } = registerUser;
+
   const navigate = useNavigate();
   const {
     register,
@@ -21,25 +19,26 @@ const Register = () => {
     reset,
   } = useForm();
 
-  useEffect(() => {
-    if (email && password && confirmPassword && password === confirmPassword) {
+  const handleRegister = (data) => {
+    const { email, password, confirmPassword } = data;
+    if (password !== confirmPassword) {
+      setErrorText("Password did not match");
+      return;
+    } else {
       createUserWithEmailAndPassword(email, password)
         .then(() => {
-          setRegisterUser({});
           navigate("/");
+          reset();
         })
         .catch();
     }
-  }, [email, password, confirmPassword]);
+  };
 
   useEffect(() => {
-    if (password !== confirmPassword) {
-      setErrorText("Password did not match");
-    }
     if (error) {
       setErrorText(error.message);
     }
-  }, [password, confirmPassword, error]);
+  }, [error]);
 
   if (loading) {
     return <Spinner />;
@@ -55,11 +54,7 @@ const Register = () => {
       <div className="container mx-auto">
         <form
           className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
-          onSubmit={handleSubmit((data) => {
-            setRegisterUser(data);
-            setErrorText("");
-            reset();
-          })}
+          onSubmit={handleSubmit(handleRegister)}
         >
           <input
             type="email"
@@ -106,7 +101,7 @@ const Register = () => {
           <input
             type="submit"
             value="Register"
-            className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] w-[66%] mt-14"
+            className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] w-[66%] mt-14 cursor-pointer"
           />
           <p className="w-[64%] text-lg font-medium text-gray-500 capitalize">
             already have an account?{" "}

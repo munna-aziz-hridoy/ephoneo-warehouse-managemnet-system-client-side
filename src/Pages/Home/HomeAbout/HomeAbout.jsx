@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import aboutImg from "../../../assets/images/about.jpg";
 
 const HomeAbout = () => {
+  const navigate = useNavigate();
   return (
     <div className="container mx-auto my-40">
       <div className="flex justify-between items-center flex-col lg:flex-row">
@@ -17,8 +19,11 @@ const HomeAbout = () => {
             you are here to buy something from us, please it will help for a lot
             of getting the products
           </p>
-          <button className="text-semibold capitalize hover:bg-[#5c2d91] bg-white px-8 py-3 rounded-lg shadow-lg text-lg hover:text-white text-[#5c2d91] border-2 border-[#5c2d91] my-10">
-            about
+          <button
+            onClick={() => navigate("/blog")}
+            className="text-semibold capitalize hover:bg-[#5c2d91] bg-white px-8 py-3 rounded-lg shadow-lg text-lg hover:text-white text-[#5c2d91] border-2 border-[#5c2d91] my-10"
+          >
+            blog
           </button>
         </div>
         <div className="w-full lg:w-1/2 flex justify-end">

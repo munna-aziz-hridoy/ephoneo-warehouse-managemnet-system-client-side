@@ -53,7 +53,7 @@ const Header = () => {
                 my items
               </Link>
               <div
-                className="bg-slate-200 w-[55px] h-[55px] rounded-full p-1 flex justify-center items-center"
+                className="bg-slate-200 w-[55px] h-[55px] rounded-full p-1 flex justify-center items-center cursor-pointer"
                 onClick={() => setUserExpend(!userExpend)}
               >
                 <img

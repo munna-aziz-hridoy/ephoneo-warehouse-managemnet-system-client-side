@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import ProductCard from "../../../Components/ProductCard/ProductCard";
-import Spinner from "../../../Components/Spinner/Spinner";
+
 import useProducts from "../../../hooks/useProducts";
 
 const HomeInventory = () => {
   const [products] = useProducts(6);
+  const navigate = useNavigate();
 
   return (
     <div className="container mx-auto my-36">
@@ -18,7 +20,10 @@ const HomeInventory = () => {
         ))}
       </div>
       <div className="flex justify-center items-center">
-        <button className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91] my-3">
+        <button
+          onClick={() => navigate("/inventory")}
+          className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91] my-3"
+        >
           manage inventory
         </button>
       </div>

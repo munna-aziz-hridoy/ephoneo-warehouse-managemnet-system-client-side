@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
@@ -10,9 +10,8 @@ import Spinner from "../../Components/Spinner/Spinner";
 import auth from "../../firebase.init";
 
 const Login = () => {
-  const [loggedUserInfo, setLoggedUserInfo] = useState({});
   const [loggedUser, loggedUserLoading] = useAuthState(auth);
-  const { email, password } = loggedUserInfo;
+
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const location = useLocation();
@@ -26,13 +25,10 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    if (email && password) {
-      signInWithEmailAndPassword(email, password).then(() => {
-        setLoggedUserInfo({});
-      });
-    }
-  }, [email, password]);
+  const handleLogin = (data) => {
+    const { email, password } = data;
+    signInWithEmailAndPassword(email, password).then(() => reset());
+  };
 
   if (loading || loggedUserLoading) {
     return <Spinner />;
@@ -50,10 +46,7 @@ const Login = () => {
       <div className="container mx-auto">
         <form
           className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
-          onSubmit={handleSubmit((data) => {
-            setLoggedUserInfo(data);
-            reset();
-          })}
+          onSubmit={handleSubmit(handleLogin)}
         >
           <input
             type="email"
@@ -89,7 +82,7 @@ const Login = () => {
           <input
             type="submit"
             value="login"
-            className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] w-[66%] mt-14"
+            className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] w-[66%] mt-14 cursor-pointer"
           />
           <p className="w-[64%] text-lg font-medium text-gray-500 capitalize">
             already have an account?{" "}

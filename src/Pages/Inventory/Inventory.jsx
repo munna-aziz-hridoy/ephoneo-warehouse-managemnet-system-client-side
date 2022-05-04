@@ -6,9 +6,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import useProducts from "../../hooks/useProducts";
+import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
-  const [products, setProducts] = useProducts();
+  const [products] = useProducts();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -93,7 +95,10 @@ const Inventory = () => {
                     <td className="px-6 py-4">{quantity}</td>
                     <td className="px-6 py-4">{sold}</td>
                     <td className="px-6 py-4 text-right flex gap-8 justify-center">
-                      <button className="flex justify-center items-center text-semibold w-[70px] h-[60px] capitalize hover:bg-[#5c2d91] bg-white  rounded-lg shadow-lg text-lg hover:text-white text-[#5c2d91] border-2 border-[#5c2d91]">
+                      <button
+                        onClick={() => navigate(`/update/${_id}`)}
+                        className="flex justify-center items-center text-semibold w-[70px] h-[60px] capitalize hover:bg-[#5c2d91] bg-white  rounded-lg shadow-lg text-lg hover:text-white text-[#5c2d91] border-2 border-[#5c2d91]"
+                      >
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
                       <button className="flex justify-center items-center gap-5 text-semibold capitalize hover:bg-red-400 bg-white w-[60px] h-[60px] rounded-full shadow-lg text-lg hover:text-white text-red-400 border-2 border-red-400">

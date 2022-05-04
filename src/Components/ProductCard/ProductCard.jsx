@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { brand, description, image, name, price, quantity, supplier } =
+  const navigate = useNavigate();
+
+  const { _id, brand, description, image, name, price, quantity, supplier } =
     product;
   return (
     <div className="p-4 rounded-lg shadow hover:shadow-xl hover:translate-y-[-5px] duration-300">
@@ -22,7 +25,10 @@ const ProductCard = ({ product }) => {
         <span>quantity: {quantity}</span>
       </p>
       <p className="text-md text-gray-500 capitalize">{description}</p>
-      <button className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-3 w-full">
+      <button
+        onClick={() => navigate(`/update/${_id}`)}
+        className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-3 w-full"
+      >
         update
       </button>
     </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { async } from "@firebase/util";
 
 const AddProduct = () => {
   const [user] = useAuthState(auth);
@@ -19,8 +18,8 @@ const AddProduct = () => {
     reset,
   } = useForm();
 
-  const handleAddProduct = async (data) => {
-    await fetch("http://localhost:5000/products", {
+  const handleAddProduct = (data) => {
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -42,7 +41,7 @@ const AddProduct = () => {
       <div className="container mx-auto">
         <form
           className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
-          onSubmit={handleSubmit((data) => handleAddProduct(data))}
+          onSubmit={handleSubmit(handleAddProduct)}
         >
           <input
             type="text"
