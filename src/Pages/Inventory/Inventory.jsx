@@ -5,46 +5,10 @@ import {
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
+import useProducts from "../../hooks/useProducts";
 
 const Inventory = () => {
-  const products = [
-    {
-      name: "huawei watch gt 2",
-      image: "https://i.ibb.co/Xby7Gqh/2.png",
-      description:
-        "huawei gt 2 is one of the best watch of huawei, its show every movement of yours and also send all notification from your phone",
-      supplier: "huawei lnc",
-      brand: "huawei",
-      price: 108,
-      quantity: 13,
-      sold: 7,
-      _id: 1,
-    },
-    {
-      name: "huawei watch gt 1",
-      image: "https://i.ibb.co/99rRpbr/1.png",
-      description:
-        "huawei gt 1 is first revolionary watch of huawei, you can measure your every day activities and track your health condition",
-      supplier: "huawei lnc",
-      brand: "huawei",
-      price: 180,
-      quantity: 15,
-      sold: 9,
-      _id: 2,
-    },
-    {
-      name: "galaxy watch 3",
-      image: "https://i.ibb.co/vYDgxCp/3.png",
-      description:
-        "samsung galaxy watch 3. space in your wrist. track every single space throw our watch 3",
-      supplier: "samsung lnc",
-      brand: "samsung",
-      price: 135,
-      quantity: 8,
-      sold: 3,
-      _id: 3,
-    },
-  ];
+  const [products, setProducts] = useProducts();
 
   return (
     <div>
@@ -91,8 +55,16 @@ const Inventory = () => {
             </thead>
             <tbody>
               {products.map((product) => {
-                const { _id, name, image, brand, price, quantity, sold } =
-                  product;
+                const {
+                  _id,
+                  name,
+                  image,
+                  brand,
+                  price,
+                  quantity,
+                  sold,
+                  description,
+                } = product;
                 return (
                   <tr
                     key={_id}
@@ -100,14 +72,21 @@ const Inventory = () => {
                   >
                     <th
                       scope="row"
-                      className="px-6 py-4 font-medium text-gray-600  whitespace-nowrap capitalize flex justify-start items-center gap-3"
+                      className="px-6 py-4 flex justify-start items-center gap-3"
                     >
                       <img
                         src={image}
                         alt=""
                         className="w-[70px] h-[70px] rounded-lg shadow-md"
                       />
-                      <p> {name}</p>
+                      <div>
+                        <p className="font-medium text-gray-600 capitalize">
+                          {name}
+                        </p>
+                        <p className="text-sm  font-medium text-gray-500">
+                          {description}
+                        </p>
+                      </div>
                     </th>
                     <td className="px-6 py-4">${price}</td>
                     <td className="px-6 py-4 capitalize font-bold">{brand}</td>

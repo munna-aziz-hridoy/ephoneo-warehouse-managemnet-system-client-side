@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import CustomLink from "../CustomLink/CustomLink";
-import profilePhoto from "../../assets/images/profile.png";
+import profilePhotoDemi from "../../assets/images/profile.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { signOut } from "firebase/auth";
@@ -19,6 +19,8 @@ const Header = () => {
     { id: 3, name: "add item", link: "/addproduct" },
     { id: 4, name: "blog", link: "/blog" },
   ];
+  const profilePhoto = user?.photoURL;
+
   return (
     <header className="h-[90px] shadow-lg flex justify-center items-center">
       <nav className="container mx-auto h-full flex justify-between items-center relative">
@@ -54,15 +56,19 @@ const Header = () => {
                 className="bg-slate-200 w-[55px] h-[55px] rounded-full p-1 flex justify-center items-center"
                 onClick={() => setUserExpend(!userExpend)}
               >
-                <img src={profilePhoto} alt="" className="rounded-full" />
+                <img
+                  src={profilePhoto ? profilePhoto : profilePhotoDemi}
+                  alt=""
+                  className="rounded-full"
+                />
               </div>
               <div
                 className={`${
                   userExpend ? "block" : "hidden"
                 } absolute w-1/2 lg:w-[150%] shadow-lg rounded-lg h-32 top-28 left-1/4 lg:left-[-90px] bg-white`}
               >
-                <h2 className="text-lg font-semibold text-gray-500 capitalize mt-2">
-                  user@email.com
+                <h2 className="text-lg font-semibold text-gray-500  mt-2">
+                  {user?.email}
                 </h2>
                 <button
                   onClick={() => signOut(auth)}

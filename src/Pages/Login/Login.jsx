@@ -88,6 +88,7 @@ const Login = () => {
           )}
           <input
             type="submit"
+            value="login"
             className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] w-[66%] mt-14"
           />
           <p className="w-[64%] text-lg font-medium text-gray-500 capitalize">
