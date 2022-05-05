@@ -4,10 +4,7 @@ import { useParams } from "react-router-dom";
 
 const UpdateItem = () => {
   const [product, setProduct] = useState({});
-  const { register, handleSubmit, errors } = useForm(); // initialize the hook
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const { register, handleSubmit, reset } = useForm(); // initialize the hook
   const { id } = useParams();
 
   useEffect(() => {
@@ -16,6 +13,23 @@ const UpdateItem = () => {
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, [id]);
+
+  const onSubmit = (data) => {
+    const { quantity, ...rest } = product;
+    const newQuantity = parseInt(data.quantity) + parseInt(quantity);
+    const updatedProduct = { ...rest, quantity: newQuantity };
+    setProduct(updatedProduct);
+    reset();
+
+    const url = `http://localhost:5000/update/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(updatedProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
 
   const { name, image, description, supplier, brand, price, quantity, sold } =
     product;
