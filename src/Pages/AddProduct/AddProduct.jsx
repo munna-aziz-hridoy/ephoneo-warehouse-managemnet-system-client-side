@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 
 const AddProduct = () => {
   const [user] = useAuthState(auth);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("admin@ephoneo.com");
   useEffect(() => {
     if (user) {
       setEmail(user.email);
@@ -19,6 +19,9 @@ const AddProduct = () => {
   } = useForm();
 
   const handleAddProduct = (data) => {
+    console.log(email);
+    console.log("clicked");
+    console.log(data);
     fetch("https://agile-ridge-94363.herokuapp.com/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -141,7 +144,8 @@ const AddProduct = () => {
           />
           <input
             type="submit"
-            className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91] w-[66%] my-14"
+            value="add product"
+            className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91] w-[66%] my-14 cursor-pointer"
           />
         </form>
       </div>
