@@ -8,7 +8,7 @@ const UpdateItem = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:5000/singleProduct?id=${id}`;
+    const url = `https://agile-ridge-94363.herokuapp.com/singleProduct?id=${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -21,7 +21,7 @@ const UpdateItem = () => {
     setProduct(updatedProduct);
     reset();
 
-    const url = `http://localhost:5000/update/${id}`;
+    const url = `https://agile-ridge-94363.herokuapp.com/update/${id}`;
     fetch(url, {
       method: "PUT",
       headers: { "content-type": "application/json" },
@@ -38,7 +38,7 @@ const UpdateItem = () => {
     const newProduct = { ...rest, quantity: newQuantity, sold: newSold };
     setProduct(newProduct);
 
-    const url = `http://localhost:5000/update/${id}`;
+    const url = `https://agile-ridge-94363.herokuapp.com/update/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

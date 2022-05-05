@@ -19,7 +19,7 @@ const AddProduct = () => {
   } = useForm();
 
   const handleAddProduct = (data) => {
-    fetch("http://localhost:5000/products", {
+    fetch("https://agile-ridge-94363.herokuapp.com/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
