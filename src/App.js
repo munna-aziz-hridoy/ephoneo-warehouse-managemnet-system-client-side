@@ -4,6 +4,7 @@ import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
 import AddProduct from "./Pages/AddProduct/AddProduct";
+import Blogs from "./Pages/Blogs/Blogs";
 import FourZeroFour from "./Pages/FourZeroFour/FourZeroFour";
 import Home from "./Pages/Home/Home";
 import Inventory from "./Pages/Inventory/Inventory";
@@ -42,6 +43,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="/blog" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route

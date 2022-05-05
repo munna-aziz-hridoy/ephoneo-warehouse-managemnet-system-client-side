@@ -20,6 +20,7 @@ const Header = () => {
     { id: 4, name: "blog", link: "/blog" },
   ];
   const profilePhoto = user?.photoURL;
+  fetch("https://agile-ridge-94363.herokuapp.com/");
 
   return (
     <header className="h-[90px] shadow-lg flex justify-center items-center">

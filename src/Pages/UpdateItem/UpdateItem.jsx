@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const UpdateItem = () => {
   const [product, setProduct] = useState({});
@@ -112,6 +112,14 @@ const UpdateItem = () => {
             shipped
           </button>
         </div>
+      </div>
+      <div className="flex justify-center items-center my-16">
+        <Link
+          className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91]"
+          to="/inventory"
+        >
+          manage inventory
+        </Link>
       </div>
     </>
   );

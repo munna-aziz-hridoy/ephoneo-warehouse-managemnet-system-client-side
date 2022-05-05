@@ -6,7 +6,24 @@ import ProductCard from "../../Components/ProductCard/ProductCard";
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
-  const [products] = useProducts(0, user.email);
+  const [products, setProducts] = useProducts(0, user.email);
+
+  const handleDelete = (id) => {
+    const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
+    const sureDelete = window.confirm(
+      "Are you sure you want to delete the product?"
+    );
+    if (sureDelete) {
+      fetch(url, { method: "DELETE" })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+
+      const restItem = products.filter((product) => product._id !== id);
+      setProducts(restItem);
+    } else {
+      return;
+    }
+  };
 
   return (
     <>
@@ -28,7 +45,16 @@ const MyItems = () => {
               quantity,
               supplier,
             } = product;
-            return <ProductCard key={product._id} product={product} />;
+            return (
+              <ProductCard key={_id} product={product}>
+                <button
+                  onClick={() => handleDelete(_id)}
+                  className="text-semibold capitalize text-red-500 hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-red-500 border-2 border-red-500 w-full"
+                >
+                  delete
+                </button>
+              </ProductCard>
+            );
           })}
         </div>
       </div>

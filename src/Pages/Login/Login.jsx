@@ -1,19 +1,24 @@
 import React from "react";
 import {
   useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import SocialButtons from "../../Components/SocialButtons/SocialButtons";
 import Spinner from "../../Components/Spinner/Spinner";
 import auth from "../../firebase.init";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [loggedUser, loggedUserLoading] = useAuthState(auth);
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -36,6 +41,20 @@ const Login = () => {
   if (loggedUser) {
     navigate(from);
   }
+
+  const handlePasswordReset = () => {
+    const email = document.getElementById("email").value;
+
+    if (email !== "") {
+      sendPasswordResetEmail(email).then(() => {
+        toast("Reset password email sent");
+        document.getElementById("email").value = "";
+      });
+    } else {
+      toast("Please enter a email");
+    }
+  };
+
   return (
     <>
       <div className="bg-[#19092c] py-24 my-10">
@@ -45,7 +64,7 @@ const Login = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-10"
+          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-4"
           onSubmit={handleSubmit(handleLogin)}
         >
           <input
@@ -91,8 +110,19 @@ const Login = () => {
             </Link>
           </p>
         </form>
+        <p className="w-3/4 text-lg font-medium text-gray-500 capitalize text-center mb-14">
+          forgot password?{" "}
+          <button
+            onClick={handlePasswordReset}
+            to="/register"
+            className="text-[#5c2d91] font-bold mx-3"
+          >
+            reset
+          </button>
+        </p>
         <SocialButtons />
       </div>
+      <ToastContainer />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ children, product }) => {
   const navigate = useNavigate();
 
   const { _id, brand, description, image, name, price, quantity, supplier } =
@@ -31,6 +31,7 @@ const ProductCard = ({ product }) => {
       >
         update
       </button>
+      {children ? children : ""}
     </div>
   );
 };
