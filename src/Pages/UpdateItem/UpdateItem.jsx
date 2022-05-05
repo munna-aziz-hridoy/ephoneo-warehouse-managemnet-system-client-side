@@ -26,9 +26,26 @@ const UpdateItem = () => {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(updatedProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    });
+  };
+
+  const handleShipping = () => {
+    const { quantity, sold, ...rest } = product;
+
+    const newQuantity = quantity - 1;
+    const newSold = sold + 1;
+
+    const newProduct = { ...rest, quantity: newQuantity, sold: newSold };
+    setProduct(newProduct);
+
+    const url = `http://localhost:5000/update/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    });
   };
 
   const { name, image, description, supplier, brand, price, quantity, sold } =
@@ -88,7 +105,10 @@ const UpdateItem = () => {
               className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-3"
             />
           </form>
-          <button className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91]">
+          <button
+            onClick={handleShipping}
+            className="text-semibold capitalize text-[#5c2d91] hover:text-white px-8 py-3 rounded-lg shadow-lg text-lg bg-white hover:bg-[#5c2d91] border-2 border-[#5c2d91]"
+          >
             shipped
           </button>
         </div>

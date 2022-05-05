@@ -14,12 +14,19 @@ const Inventory = () => {
 
   const handleDelete = (id) => {
     const url = `http://localhost:5000/delete/${id}`;
-    fetch(url, { method: "DELETE" })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    const sureDelete = window.confirm(
+      "Are you sure you want to delete the product?"
+    );
+    if (sureDelete) {
+      fetch(url, { method: "DELETE" })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
 
-    const restItem = products.filter((product) => product._id !== id);
-    setProducts(restItem);
+      const restItem = products.filter((product) => product._id !== id);
+      setProducts(restItem);
+    } else {
+      return;
+    }
   };
 
   return (
