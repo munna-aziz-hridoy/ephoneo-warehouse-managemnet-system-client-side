@@ -9,8 +9,18 @@ import useProducts from "../../hooks/useProducts";
 import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
-  const [products] = useProducts();
+  const [products, setProducts] = useProducts();
   const navigate = useNavigate();
+
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/delete/${id}`;
+    fetch(url, { method: "DELETE" })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
+    const restItem = products.filter((product) => product._id !== id);
+    setProducts(restItem);
+  };
 
   return (
     <div>
@@ -101,7 +111,10 @@ const Inventory = () => {
                       >
                         <FontAwesomeIcon icon={faEdit} />
                       </button>
-                      <button className="flex justify-center items-center gap-5 text-semibold capitalize hover:bg-red-400 bg-white w-[60px] h-[60px] rounded-full shadow-lg text-lg hover:text-white text-red-400 border-2 border-red-400">
+                      <button
+                        onClick={() => handleDelete(_id)}
+                        className="flex justify-center items-center gap-5 text-semibold capitalize hover:bg-red-400 bg-white w-[60px] h-[60px] rounded-full shadow-lg text-lg hover:text-white text-red-400 border-2 border-red-400"
+                      >
                         <FontAwesomeIcon icon={faTrash} />
                       </button>
                     </td>
