@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 
 const AddProduct = () => {
   const [user] = useAuthState(auth);
-  const [email, setEmail] = useState("admin@ephoneo.com");
+  const [email, setEmail] = useState("");
   useEffect(() => {
     if (user) {
       setEmail(user.email);
@@ -18,14 +18,12 @@ const AddProduct = () => {
     reset,
   } = useForm();
 
-  const handleAddProduct = (data) => {
-    console.log(email);
-    console.log("clicked");
-    console.log(data);
-    fetch("https://agile-ridge-94363.herokuapp.com/products", {
+  const handleAddProduct = async (data) => {
+    const newProduct = { ...data, sold: 0 };
+    fetch("http://agile-ridge-94363.herokuapp.com/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(newProduct),
     })
       .then((res) => res.json())
       .then((data) => {

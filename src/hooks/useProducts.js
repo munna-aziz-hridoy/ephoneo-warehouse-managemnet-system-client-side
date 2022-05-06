@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const useProducts = (limit, email) => {
+const useProducts = (limit) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    const url = `https://agile-ridge-94363.herokuapp.com/products?limit=${limit}&email=${email}`;
+    const url = `http://agile-ridge-94363.herokuapp.com/products?limit=${limit}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, [limit, email]);
+  }, [limit]);
   return [products, setProducts];
 };
 

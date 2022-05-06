@@ -13,7 +13,7 @@ const Inventory = () => {
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
-    const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
+    const url = `http://agile-ridge-94363.herokuapp.com/delete/${id}`;
     const sureDelete = window.confirm(
       "Are you sure you want to delete the product?"
     );

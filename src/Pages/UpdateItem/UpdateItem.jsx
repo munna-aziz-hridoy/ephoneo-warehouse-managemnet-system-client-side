@@ -8,7 +8,7 @@ const UpdateItem = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const url = `https://agile-ridge-94363.herokuapp.com/singleProduct?id=${id}`;
+    const url = `http://agile-ridge-94363.herokuapp.com/singleProduct?id=${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
@@ -21,7 +21,7 @@ const UpdateItem = () => {
     setProduct(updatedProduct);
     reset();
 
-    const url = `https://agile-ridge-94363.herokuapp.com/update/${id}`;
+    const url = `http://agile-ridge-94363.herokuapp.com/update/${id}`;
     fetch(url, {
       method: "PUT",
       headers: { "content-type": "application/json" },
@@ -38,7 +38,7 @@ const UpdateItem = () => {
     const newProduct = { ...rest, quantity: newQuantity, sold: newSold };
     setProduct(newProduct);
 
-    const url = `https://agile-ridge-94363.herokuapp.com/update/${id}`;
+    const url = `http://agile-ridge-94363.herokuapp.com/update/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -61,12 +61,12 @@ const UpdateItem = () => {
           them
         </p>
       </div>
-      <div className="container mx-auto flex justify-between items-center gap-16 my-40">
-        <div className="w-1/2 p-5 rounded-xl shadow-xl">
+      <div className="container mx-auto md:flex justify-between items-center gap-16 my-40">
+        <div className="md:w-1/2 p-5 rounded-xl shadow-xl">
           <img src={image} alt="" className="rounded-xl" />
         </div>
-        <div className="w-1/2">
-          <h2 className="text-4xl font-bold text-[#211036] capitalize my-4">
+        <div className="md:w-1/2">
+          <h2 className="text-4xl font-bold text-[#211036] capitalize my-4 mt-5">
             {name}
           </h2>
           <div className="flex flex-col gap-5">

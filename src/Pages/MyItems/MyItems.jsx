@@ -1,23 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import useProducts from "../../hooks/useProducts";
+
 import ProductCard from "../../Components/ProductCard/ProductCard";
+import axios from "axios";
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
-  const [products, setProducts] = useProducts(0, user.email);
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const url = `http://agile-ridge-94363.herokuapp.com/myitems?email=${user?.email}`;
+    const getProduct = async () => {
+      const { data } = await axios.get(url, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+      if (data) {
+        setProducts(data);
+      }
+    };
+    getProduct();
+  }, [user]);
 
   const handleDelete = (id) => {
-    const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
+    const url = `http://agile-ridge-94363.herokuapp.com/delete/${id}`;
     const sureDelete = window.confirm(
       "Are you sure you want to delete the product?"
     );
     if (sureDelete) {
-      fetch(url, { method: "DELETE" })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
-
+      fetch(url, { method: "DELETE" });
       const restItem = products.filter((product) => product._id !== id);
       setProducts(restItem);
     } else {
@@ -35,16 +49,7 @@ const MyItems = () => {
       <div className="container mx-auto">
         <div className="md:grid grid-cols-2 lg:grid-cols-3 my-20 gap-5">
           {products.map((product) => {
-            const {
-              _id,
-              brand,
-              description,
-              image,
-              name,
-              price,
-              quantity,
-              supplier,
-            } = product;
+            const { _id } = product;
             return (
               <ProductCard key={_id} product={product}>
                 <button

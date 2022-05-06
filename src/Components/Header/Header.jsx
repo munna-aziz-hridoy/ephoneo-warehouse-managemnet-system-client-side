@@ -20,7 +20,6 @@ const Header = () => {
     { id: 4, name: "blog", link: "/blog" },
   ];
   const profilePhoto = user?.photoURL;
-  fetch("https://agile-ridge-94363.herokuapp.com/");
 
   return (
     <header className="h-[90px] shadow-lg flex justify-center items-center">
@@ -72,7 +71,11 @@ const Header = () => {
                   {user?.email}
                 </h2>
                 <button
-                  onClick={() => signOut(auth)}
+                  onClick={() => {
+                    signOut(auth);
+                    setMenuOpen(false);
+                    setUserExpend(false);
+                  }}
                   className="text-semibold capitalize bg-[#5c2d91] hover:bg-white px-8 py-3 rounded-lg shadow-lg text-lg text-white hover:text-[#5c2d91] border-2 border-[#5c2d91] my-6 w-full lg:w-2/3"
                 >
                   log out

@@ -11,6 +11,7 @@ import SocialButtons from "../../Components/SocialButtons/SocialButtons";
 import Spinner from "../../Components/Spinner/Spinner";
 import auth from "../../firebase.init";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Login = () => {
   const [loggedUser, loggedUserLoading] = useAuthState(auth);
@@ -30,9 +31,17 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  const handleLogin = (data) => {
-    const { email, password } = data;
-    signInWithEmailAndPassword(email, password).then(() => reset());
+  const handleLogin = async (userData) => {
+    const { email, password } = userData;
+    await signInWithEmailAndPassword(email, password);
+    reset();
+    const { data } = await axios.post(
+      "http://agile-ridge-94363.herokuapp.com/getToken",
+      {
+        email,
+      }
+    );
+    localStorage.setItem("accessToken", data.accessToken);
   };
 
   if (loading || loggedUserLoading) {
