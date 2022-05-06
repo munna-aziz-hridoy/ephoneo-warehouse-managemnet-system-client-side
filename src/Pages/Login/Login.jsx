@@ -36,7 +36,7 @@ const Login = () => {
     await signInWithEmailAndPassword(email, password);
     reset();
     const { data } = await axios.post(
-      "http://agile-ridge-94363.herokuapp.com/getToken",
+      "https://agile-ridge-94363.herokuapp.com/getToken",
       {
         email,
       }
