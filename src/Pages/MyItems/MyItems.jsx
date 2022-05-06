@@ -4,6 +4,7 @@ import auth from "../../firebase.init";
 
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import axios from "axios";
+import { async } from "@firebase/util";
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
@@ -13,18 +14,18 @@ const MyItems = () => {
   useEffect(() => {
     const url = `https://agile-ridge-94363.herokuapp.com/myitems?email=${user?.email}`;
     const getProduct = async () => {
-      const { data } = await axios.get(url, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
-      if (data) {
-        setProducts(data);
-      }
+      const { data } = await axios
+        .get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .catch(console.dir);
+      setProducts(data);
     };
     getProduct();
   }, [user]);
-
+  console.log(products);
   const handleDelete = (id) => {
     const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
     const sureDelete = window.confirm(
@@ -46,7 +47,7 @@ const MyItems = () => {
           my items
         </h2>
       </div>
-      <div className="container mx-auto">
+      <div className="container mx-auto min-h-[70vh]">
         <div className="md:grid grid-cols-2 lg:grid-cols-3 my-20 gap-5">
           {products.map((product) => {
             const { _id } = product;

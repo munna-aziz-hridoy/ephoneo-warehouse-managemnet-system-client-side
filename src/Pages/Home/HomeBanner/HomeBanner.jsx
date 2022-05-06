@@ -1,5 +1,5 @@
 import React from "react";
-import { Pagination, Autoplay } from "swiper";
+import { Pagination, Autoplay, Navigation, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -18,10 +18,11 @@ const HomeBanner = () => {
         pagination={{
           dynamicBullets: true,
         }}
+        scrollbar={{ draggable: true }}
+        navigation
         loop={true}
         autoplay={{ delay: 5000 }}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper"
+        modules={[Pagination, Autoplay, Navigation, Scrollbar, A11y]}
       >
         <SwiperSlide className="relative">
           <img src={banner1} alt="" className="w-full" />

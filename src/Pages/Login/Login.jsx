@@ -34,13 +34,16 @@ const Login = () => {
   const handleLogin = async (userData) => {
     const { email, password } = userData;
     await signInWithEmailAndPassword(email, password);
+
     reset();
+
     const { data } = await axios.post(
       "https://agile-ridge-94363.herokuapp.com/getToken",
       {
         email,
       }
     );
+
     localStorage.setItem("accessToken", data.accessToken);
   };
 
