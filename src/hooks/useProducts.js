@@ -4,7 +4,7 @@ const useProducts = (limit) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const url = `https://agile-ridge-94363.herokuapp.com/products?limit=${limit}`;
-    console.log(url);
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProducts(data));

@@ -18,9 +18,7 @@ const Inventory = () => {
       "Are you sure you want to delete the product?"
     );
     if (sureDelete) {
-      fetch(url, { method: "DELETE" })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+      fetch(url, { method: "DELETE" });
 
       const restItem = products.filter((product) => product._id !== id);
       setProducts(restItem);

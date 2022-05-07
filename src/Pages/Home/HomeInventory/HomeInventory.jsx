@@ -8,7 +8,6 @@ import Spinner from "../../../Components/Spinner/Spinner";
 const HomeInventory = () => {
   const [products] = useProducts(6);
   const navigate = useNavigate();
-  console.log(products);
 
   return (
     <div className="container mx-auto my-36">

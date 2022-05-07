@@ -4,7 +4,6 @@ import auth from "../../firebase.init";
 
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import axios from "axios";
-import { async } from "@firebase/util";
 
 const MyItems = () => {
   const [user] = useAuthState(auth);
@@ -25,7 +24,7 @@ const MyItems = () => {
     };
     getProduct();
   }, [user]);
-  console.log(products);
+
   const handleDelete = (id) => {
     const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
     const sureDelete = window.confirm(

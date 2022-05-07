@@ -32,6 +32,9 @@ const UpdateItem = () => {
   const handleShipping = () => {
     const { quantity, sold, ...rest } = product;
 
+    if (quantity <= 0) {
+      return;
+    }
     const newQuantity = quantity - 1;
     const newSold = sold + 1;
 

@@ -35,8 +35,7 @@ const SocialButtons = () => {
           email: userGoogle?.user?.email,
         }
       );
-      console.log(data);
-      console.log(userGoogle);
+
       localStorage.setItem("accessToken", data.accessToken);
     };
 
