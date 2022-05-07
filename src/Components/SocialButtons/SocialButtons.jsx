@@ -29,9 +29,12 @@ const SocialButtons = () => {
 
   useEffect(() => {
     const createToken = async () => {
-      const { data } = await axios.post("http://localhost:5000/getToken", {
-        email: userGoogle.user.email,
-      });
+      const { data } = await axios.post(
+        "https://agile-ridge-94363.herokuapp.com/getToken",
+        {
+          email: userGoogle.user.email,
+        }
+      );
       console.log(data);
       localStorage.setItem("accessToken", data.accessToken);
     };
@@ -43,9 +46,12 @@ const SocialButtons = () => {
 
   useEffect(() => {
     const createToken = async () => {
-      const { data } = await axios.post("http://localhost:5000/getToken", {
-        email: userFacebook.user.email,
-      });
+      const { data } = await axios.post(
+        "https://agile-ridge-94363.herokuapp.com/getToken",
+        {
+          email: userFacebook.user.email,
+        }
+      );
 
       localStorage.setItem("accessToken", data.accessToken);
     };
@@ -56,9 +62,12 @@ const SocialButtons = () => {
   }, [userFacebook]);
   useEffect(() => {
     const createToken = async () => {
-      const { data } = await axios.post("http://localhost:5000/getToken", {
-        email: userGitHub.user.email,
-      });
+      const { data } = await axios.post(
+        "https://agile-ridge-94363.herokuapp.com/getToken",
+        {
+          email: userGitHub.user.email,
+        }
+      );
 
       localStorage.setItem("accessToken", data.accessToken);
     };

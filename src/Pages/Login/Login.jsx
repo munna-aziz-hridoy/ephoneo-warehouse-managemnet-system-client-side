@@ -37,9 +37,12 @@ const Login = () => {
 
     reset();
     console.log("cliked");
-    const { data } = await axios.post("http://localhost:5000/getToken", {
-      email,
-    });
+    const { data } = await axios.post(
+      "https://agile-ridge-94363.herokuapp.com/getToken",
+      {
+        email,
+      }
+    );
     console.log(data);
 
     localStorage.setItem("accessToken", data.accessToken);
