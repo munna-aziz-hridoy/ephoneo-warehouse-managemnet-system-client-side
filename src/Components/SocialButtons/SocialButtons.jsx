@@ -32,10 +32,11 @@ const SocialButtons = () => {
       const { data } = await axios.post(
         "https://agile-ridge-94363.herokuapp.com/getToken",
         {
-          email: userGoogle.user.email,
+          email: userGoogle?.user?.email,
         }
       );
       console.log(data);
+      console.log(userGoogle);
       localStorage.setItem("accessToken", data.accessToken);
     };
 
