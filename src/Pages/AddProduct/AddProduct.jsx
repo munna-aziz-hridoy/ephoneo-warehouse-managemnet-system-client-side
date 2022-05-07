@@ -20,7 +20,7 @@ const AddProduct = () => {
 
   const handleAddProduct = async (data) => {
     const newProduct = { ...data, sold: 0 };
-    fetch("https://agile-ridge-94363.herokuapp.com/products", {
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),

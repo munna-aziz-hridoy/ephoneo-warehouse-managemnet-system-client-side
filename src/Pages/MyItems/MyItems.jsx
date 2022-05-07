@@ -12,7 +12,7 @@ const MyItems = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const url = `https://agile-ridge-94363.herokuapp.com/myitems?email=${user?.email}`;
+    const url = `http://localhost:5000/myitems?email=${user?.email}`;
     const getProduct = async () => {
       const { data } = await axios
         .get(url, {
@@ -27,7 +27,7 @@ const MyItems = () => {
   }, [user]);
   console.log(products);
   const handleDelete = (id) => {
-    const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
+    const url = `http://localhost:5000/delete/${id}`;
     const sureDelete = window.confirm(
       "Are you sure you want to delete the product?"
     );

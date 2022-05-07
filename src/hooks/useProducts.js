@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 const useProducts = (limit) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    const url = `https://agile-ridge-94363.herokuapp.com/products?limit=${limit}`;
+    const url = `http://localhost:5000/products?limit=${limit}`;
+    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProducts(data));
