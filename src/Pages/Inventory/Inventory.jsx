@@ -105,7 +105,7 @@ const Inventory = () => {
                         <p className="font-medium text-gray-600 capitalize">
                           {name}
                         </p>
-                        <p className="text-sm  font-medium text-gray-500">
+                        <p className="hidden md:block text-sm  font-medium text-gray-500">
                           {description}
                         </p>
                       </div>

@@ -77,7 +77,7 @@ const Login = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-4"
+          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 mt-20 mb-4 p-5"
           onSubmit={handleSubmit(handleLogin)}
         >
           <input

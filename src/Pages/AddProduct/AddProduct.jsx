@@ -41,7 +41,7 @@ const AddProduct = () => {
       </div>
       <div className="container mx-auto">
         <form
-          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20"
+          className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20 p-5"
           onSubmit={handleSubmit(handleAddProduct)}
         >
           <input
