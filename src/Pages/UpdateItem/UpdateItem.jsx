@@ -8,7 +8,7 @@ const UpdateItem = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    const url = `https://agile-ridge-94363.herokuapp.com/productssingleProduct?id=${id}`;
+    const url = `https://agile-ridge-94363.herokuapp.com/singleProduct?id=${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
