@@ -16,6 +16,7 @@ import axios from "axios";
 const SocialButtons = () => {
   const [errorText, setErrorText] = useState("");
 
+  // get social sign in method
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
     useSignInWithGoogle(auth);
   const [signInWithGithub, userGitHub, loadinGitHub, errorGitHub] =
@@ -23,10 +24,7 @@ const SocialButtons = () => {
   const [signInWithFacebook, userFacebook, loadingFacebook, errorFacebook] =
     useSignInWithFacebook(auth);
 
-  const handleGoogleSignIn = async () => {
-    await signInWithGoogle();
-  };
-
+  // get jwt token when sign in using google
   useEffect(() => {
     const createToken = async () => {
       const { data } = await axios.post(
@@ -44,6 +42,7 @@ const SocialButtons = () => {
     }
   }, [userGoogle]);
 
+  // get jwt token when sign in using facebook
   useEffect(() => {
     const createToken = async () => {
       const { data } = await axios.post(
@@ -60,6 +59,8 @@ const SocialButtons = () => {
       createToken();
     }
   }, [userFacebook]);
+
+  // get jwt token when sign in using github
   useEffect(() => {
     const createToken = async () => {
       const { data } = await axios.post(
@@ -77,6 +78,7 @@ const SocialButtons = () => {
     }
   }, [userGitHub]);
 
+  // handle error
   useEffect(() => {
     if (errorGoogle) {
       setErrorText(errorGoogle.message);
@@ -93,7 +95,7 @@ const SocialButtons = () => {
     <div className="mb-28">
       <div className="w-full flex justify-center items-center  gap-7">
         <button
-          onClick={handleGoogleSignIn}
+          onClick={() => signInWithGoogle()}
           className="flex justify-center items-center text-semibold w-[70px] h-[60px] capitalize hover:bg-[#5c2d91] bg-white  rounded-lg shadow-lg text-lg hover:text-white text-[#5c2d91] border-2 border-[#5c2d91]"
         >
           <FontAwesomeIcon icon={faGoogle} className="text-3xl" />

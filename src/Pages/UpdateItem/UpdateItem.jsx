@@ -7,6 +7,7 @@ const UpdateItem = () => {
   const { register, handleSubmit, reset } = useForm(); // initialize the hook
   const { id } = useParams();
 
+  // load product based on id
   useEffect(() => {
     const url = `https://agile-ridge-94363.herokuapp.com/singleProduct?id=${id}`;
     fetch(url)
@@ -14,9 +15,14 @@ const UpdateItem = () => {
       .then((data) => setProduct(data));
   }, [id]);
 
+  // handle update product and send to server
   const onSubmit = (data) => {
     const { quantity, ...rest } = product;
-    const newQuantity = parseInt(data.quantity) + parseInt(quantity);
+    const stockCount = parseInt(data.quantity);
+    if (stockCount <= 0) {
+      return;
+    }
+    const newQuantity = stockCount + parseInt(quantity);
     const updatedProduct = { ...rest, quantity: newQuantity };
     setProduct(updatedProduct);
     reset();
@@ -29,6 +35,7 @@ const UpdateItem = () => {
     });
   };
 
+  // handle deliver or shipping button
   const handleShipping = () => {
     const { quantity, sold, ...rest } = product;
 

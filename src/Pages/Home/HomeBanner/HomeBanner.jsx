@@ -24,6 +24,7 @@ const HomeBanner = () => {
         autoplay={{ delay: 5000 }}
         modules={[Pagination, Autoplay, Navigation, Scrollbar, A11y]}
       >
+        {/* slider one */}
         <SwiperSlide className="relative">
           <img src={banner1} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">
@@ -37,6 +38,8 @@ const HomeBanner = () => {
             </p>
           </div>
         </SwiperSlide>
+
+        {/* slider two */}
         <SwiperSlide className="relative">
           <img src={banner2} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">
@@ -49,6 +52,8 @@ const HomeBanner = () => {
             </p>
           </div>
         </SwiperSlide>
+
+        {/* slider three */}
         <SwiperSlide className="relative">
           <img src={banner3} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">

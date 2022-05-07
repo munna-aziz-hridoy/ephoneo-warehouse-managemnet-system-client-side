@@ -4,13 +4,18 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 
 const AddProduct = () => {
+  // get user
   const [user] = useAuthState(auth);
+
+  // set email when user is ready
   const [email, setEmail] = useState("");
   useEffect(() => {
     if (user) {
       setEmail(user.email);
     }
   }, [user]);
+
+  // import form dependecy
   const {
     register,
     handleSubmit,
@@ -18,6 +23,7 @@ const AddProduct = () => {
     reset,
   } = useForm();
 
+  // handling add product
   const handleAddProduct = async (data) => {
     const newProduct = { ...data, sold: 0 };
     fetch("https://agile-ridge-94363.herokuapp.com/products", {
@@ -39,6 +45,7 @@ const AddProduct = () => {
         </h2>
       </div>
       <div className="container mx-auto">
+        {/* Product add form */}
         <form
           className="w-full  lg:w-2/3 mx-auto flex justify-start items-center flex-col gap-6 my-20 p-5"
           onSubmit={handleSubmit(handleAddProduct)}

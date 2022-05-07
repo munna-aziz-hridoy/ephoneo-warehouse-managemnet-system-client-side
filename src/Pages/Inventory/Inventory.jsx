@@ -12,6 +12,7 @@ const Inventory = () => {
   const [products, setProducts] = useProducts();
   const navigate = useNavigate();
 
+  // handle delete product
   const handleDelete = (id) => {
     const url = `https://agile-ridge-94363.herokuapp.com/delete/${id}`;
     const sureDelete = window.confirm(
@@ -39,6 +40,7 @@ const Inventory = () => {
         </p>
       </div>
       <div className="container mx-auto">
+        {/* add product button */}
         <div className="flex justify-end">
           <button
             onClick={() => navigate("/addproduct")}
@@ -49,6 +51,7 @@ const Inventory = () => {
           </button>
         </div>
 
+        {/* inventory table */}
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mb-32 mt-5">
           <table className="w-full text-lg text-left text-gray-500">
             <thead className="text-xl text-slate-200 uppercase bg-[#19092c] ">

@@ -31,12 +31,14 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
+  // handle login
   const handleLogin = async (userData) => {
     const { email, password } = userData;
     await signInWithEmailAndPassword(email, password);
 
     reset();
 
+    // geting jwt token
     const { data } = await axios.post(
       "https://agile-ridge-94363.herokuapp.com/getToken",
       {
@@ -54,6 +56,7 @@ const Login = () => {
     navigate(from);
   }
 
+  // password reset handle and toast
   const handlePasswordReset = () => {
     const email = document.getElementById("email").value;
 
