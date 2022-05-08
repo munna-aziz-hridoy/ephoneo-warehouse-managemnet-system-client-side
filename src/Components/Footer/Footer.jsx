@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="py-10 bg-[#19092c]">
-      <div className="container mx-auto sm:grid grid-cols-2 lg:grid-cols-4 gap-20">
+      <div className="container p-5  mx-auto sm:grid grid-cols-2 lg:grid-cols-4 gap-20">
         <div>
           <h2 className="text-2xl font-semibold capitalize my-5 text-slate-100">
             about

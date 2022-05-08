@@ -39,7 +39,7 @@ const Inventory = () => {
           them
         </p>
       </div>
-      <div className="container mx-auto">
+      <div className="container p-5  mx-auto">
         {/* add product button */}
         <div className="flex justify-end">
           <button

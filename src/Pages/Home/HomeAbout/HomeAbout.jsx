@@ -5,7 +5,7 @@ import aboutImg from "../../../assets/images/about.jpg";
 const HomeAbout = () => {
   const navigate = useNavigate();
   return (
-    <div className="container mx-auto my-40">
+    <div className="container p-5  mx-auto my-40">
       <div className="flex justify-between items-center flex-col lg:flex-row">
         <div className="w-full lg:w-1/2">
           <h2 className="font-bold text-4xl capitalize text-gray-600 my-5 relative">

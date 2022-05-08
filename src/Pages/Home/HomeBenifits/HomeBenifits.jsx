@@ -10,7 +10,7 @@ import homeBenifits from "../../../assets/images/homeBenifits.jpg";
 
 const HomeBenifits = () => {
   return (
-    <div className="container mx-auto my-40">
+    <div className="container p-5  mx-auto my-40">
       <div className="flex justify-between items-center flex-col lg:flex-row gap-16">
         <div className="w-full lg:w-1/2 flex justify-start">
           <img

@@ -8,7 +8,7 @@ const Blogs = () => {
           question and answer
         </h2>
       </div>
-      <div className="container mx-auto">
+      <div className="container p-5  mx-auto">
         {/* question - 1 */}
         <div className="p-8 rounded-lg border-l-4 border-[#5c2d91] my-20 shadow-xl">
           <h2 className="text-2xl font-bold text-[#25123a] my-5">

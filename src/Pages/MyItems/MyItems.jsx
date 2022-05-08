@@ -48,7 +48,7 @@ const MyItems = () => {
           my items
         </h2>
       </div>
-      <div className="container mx-auto min-h-[70vh]">
+      <div className="container p-5  mx-auto min-h-[70vh]">
         <div className="md:grid grid-cols-2 lg:grid-cols-3 my-20 gap-5">
           {products.map((product) => {
             const { _id } = product;

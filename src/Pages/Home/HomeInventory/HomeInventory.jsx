@@ -10,7 +10,7 @@ const HomeInventory = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container mx-auto my-36">
+    <div className="container p-5  mx-auto my-36">
       <h2 className="text-4xl font-bold text-gray-600 capitalize text-center relative">
         our <span className="text-[#5c2d91]">inventory</span>
         <span className="absolute bottom-[-16px] left-[50%] translate-x-[-50%] w-36 h-2 rounded-lg bg-[#5c2d91]"></span>

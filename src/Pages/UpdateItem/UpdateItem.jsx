@@ -71,7 +71,7 @@ const UpdateItem = () => {
           them
         </p>
       </div>
-      <div className="container mx-auto md:flex justify-between items-center gap-16 my-40">
+      <div className="container p-5  mx-auto md:flex justify-between items-center gap-16 my-40">
         <div className="md:w-1/2 p-5 rounded-xl shadow-xl">
           <img src={image} alt="" className="rounded-xl" />
         </div>
@@ -99,7 +99,7 @@ const UpdateItem = () => {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex justify-start items-center gap-3 mt-6"
+            className="flex flex-col md:flex-row justify-start items-start md:items-center gap-3 mt-6"
           >
             <input
               type="number"

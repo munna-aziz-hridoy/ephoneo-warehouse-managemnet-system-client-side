@@ -2,7 +2,7 @@
 
 Project name and detais.
 
-# Name: Ephoneo
+# Name: Ephoneo (Front end code)
 
 # Live site: [Ephoneo](https://ephoneo-edbf7.web.app/)
 
