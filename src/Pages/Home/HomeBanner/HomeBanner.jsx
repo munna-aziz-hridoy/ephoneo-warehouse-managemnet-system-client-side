@@ -29,7 +29,7 @@ const HomeBanner = () => {
           <img src={banner1} alt="" className="w-full" />
           <div className="absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden sm:flex flex-col items-center justify-center gap-5">
             <h2 className="text-slate-100 font-bold text-3xl lg:text-6xl capitalize text-center">
-              we are here to store the product you need
+              we are here to store the product you need FROM TAHA
             </h2>
             <p className="text-slate-300 font-medium text-sm lg:text-xl text-center">
               Our business is to store all the accesories and phones that you
